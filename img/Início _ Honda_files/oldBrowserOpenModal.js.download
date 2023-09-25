@@ -1,0 +1,5 @@
+if(currentBrowser.name === "IE" && window.location.pathname === "/") {
+  var oldBrowserModal = document.getElementsByName("js-modal")[0];
+  oldBrowserModal.setAttribute("class", "old-browser-modal active");
+  document.documentElement.style.overflow = "hidden";
+};

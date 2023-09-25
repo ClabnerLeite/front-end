@@ -1,0 +1,145 @@
+(function (window, $) {
+  const slideWrapper = $(".highlight-slide");
+
+  const handleClickBanner = (slide, position) => {
+    if (!slide) return;
+
+    const title = slide.find(".highlight-text").text();
+    const btn = slide.find(".highlight-button");
+    const btnLabel = btn.text();
+
+    if (btn.length) {
+      btn.on("click", function () {
+        creative = `${title} - ${btnLabel}`;
+
+        dataLayer.push({
+          "event": "promotionClick",
+          "ecommerce": {
+            "promoClick": {
+              "promotions": [
+                {
+                  "name": title,
+                  "creative": creative,
+                  "position": `Carrossel Home - ${position}`,
+                },
+              ],
+            },
+          },
+        });
+      });
+    } else {
+      creative = `${title}`;
+
+      const bannerAnchor = slide.children("a");
+
+      bannerAnchor.on("click", function () {
+        creative = `${title}`;
+
+        dataLayer.push({
+          "event": "promotionClick",
+          "ecommerce": {
+            "promoClick": {
+              "promotions": [
+                {
+                  "name": title,
+                  "creative": creative,
+                  "position": `Carrossel Home - ${position}`,
+                },
+              ],
+            },
+          },
+        });
+      });
+    }
+  };
+
+  const initSwiper = () => {
+    const slide = slideWrapper.find(".slick-current");
+    const title = slide.find(".highlight-text").text();
+    const btn = slide.find(".highlight-button");
+    const btnLabel = btn.text();
+
+    let position = 1;
+    let creative;
+
+    if (btn.length) {
+      creative = `${title} - ${btnLabel}`;
+    } else {
+      const bannerAnchor = slide.children("a");
+      creative = `${title}`;
+    }
+
+    dataLayer.push({
+      "ecommerce": {
+        "promoView": {
+          "promotions": [
+            {
+              "name": title,
+              "creative": creative,
+              "position": `Carrossel Home - ${position}`,
+            },
+          ],
+        },
+      },
+    });
+
+    handleClickBanner(slide, position);
+  };
+
+  slideWrapper.on("beforeChange", function (event, slick) {
+    slick = $(slick.$slider);
+
+    const slide = slick.find(".slick-current");
+    const btn = slide.find(".highlight-button");
+
+    if (btn.length) {
+      $(btn).off("click");
+    } else {
+      const bannerAnchor = slide.children("a");
+      $(bannerAnchor).off("click");
+    }
+  });
+
+  slideWrapper.on("afterChange", function (event, slick, currentSlide) {
+    slick = $(slick.$slider);
+
+    const slide = slick.find(".slick-current");
+    const title = slide.find(".highlight-text").text();
+    const btn = slide.find(".highlight-button");
+    const btnLabel = btn.text();
+
+    let creative;
+    let position = ++currentSlide;
+
+    if (btn.length) {
+      creative = `${title} - ${btnLabel}`;
+      $(btn).off("click");
+    } else {
+      const bannerAnchor = slide.children("a");
+      creative = `${title}`;
+
+      $(bannerAnchor).off("click");
+    }
+
+    dataLayer.push({
+      "ecommerce": {
+        "promoView": {
+          "promotions": [
+            {
+              "name": title,
+              "creative": creative,
+              "position": `Carrossel Home - ${position}`,
+            },
+          ],
+        },
+      },
+    });
+
+    handleClickBanner(slide, position);
+  });
+
+  const init = (function () {
+    initSwiper();
+    handleClickBanner();
+  })();
+})(window, jQuery);

@@ -1,0 +1,178 @@
+(function (window, $) {
+  var Main = {};
+
+  Main.init = function () {
+    Main.brands();
+    Main.financialServices();
+    Main.slickHome();
+    Main.popUp();
+  };
+
+  Main.brands = function () {
+    $(".brands .btn").hover(function () {
+      var _this = $(this);
+      _this.parent().find(".over, .image-container, p").toggleClass("hover");
+    });
+  };
+
+  Main.financialServices = function () {
+    $(".financial-services .btn").hover(function () {
+      _this = $(this);
+      _this.parent().find(".over").toggleClass("active");
+    });
+  };
+
+  var slideWrapper = $(".highlight-slide"),
+      lazyImages = slideWrapper.find('.slide-image'),
+      lazyCounter = 0;
+
+  Main.postMessageToPlayer = function (player, command){
+    if (player == null || command == null) return;
+    player.contentWindow.postMessage(JSON.stringify(command), "*");
+  }
+
+  Main.playPauseVideo = function (slick, control){
+    var currentSlide = slick.find(".slick-current"),
+        slideType = currentSlide.attr("class").split(" ")[0],
+        player = currentSlide.find("iframe").get(0),
+        startTime = currentSlide.data("video-start");
+
+    if (slideType === "vimeo") {
+      switch (control) {
+        case "play":
+          if ((startTime != null && startTime > 0 ) && !currentSlide.hasClass('started')) {
+            currentSlide.addClass('started');
+            Main.postMessageToPlayer(player, {
+              "method": "setCurrentTime",
+              "value" : startTime
+            });
+          }
+          Main.postMessageToPlayer(player, {
+            "method": "play",
+            "value" : 1
+          });
+          break;
+        case "pause":
+          Main.postMessageToPlayer(player, {
+            "method": "pause",
+            "value": 1
+          });
+          break;
+      }
+    } else if (slideType === "youtube") {
+      switch (control) {
+        case "play":
+          Main.postMessageToPlayer(player, {
+            "event": "command",
+            "func": "mute"
+          });
+          Main.postMessageToPlayer(player, {
+            "event": "command",
+            "func": "playVideo"
+          });
+          break;
+        case "pause":
+          Main.postMessageToPlayer(player, {
+            "event": "command",
+            "func": "pauseVideo"
+          });
+          break;
+      }
+    } else if (slideType === "video") {
+      if(currentSlide.find("video").get(1)){
+        video = currentSlide.find("video").get(window.innerWidth <= 768?1:0);
+        currentSlide.find("video").get(0).classList.add('video-desktop');
+        currentSlide.find("video").get(1).classList.add('video-mobile');
+      }else{
+        video = currentSlide.find("video").get(0);
+      }
+      if (video != null) {
+        if (control === "play"){
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Main.popUp = function () {
+    var btnPopUp = slideWrapper.find(".buttons-holder.youtube button"),
+      popUp = $(".popup-wrapper"),
+      iframePopup = $(".popup-iframe");
+
+    btnPopUp.click(function () {
+      const urlYoutube = $(this).data("url");
+      iframePopup.attr("src", `https://www.youtube.com/embed${urlYoutube}`);
+      popUp.show();
+    });
+
+    popUp.click(function (event) {
+      const classNameOfClickedElement = event.target.classList[0];
+      const classNames = ["popup-close", "popup-wrapper"];
+      const shouldClosePopup = classNames.some(
+        (className) => className === classNameOfClickedElement
+      );
+      if (shouldClosePopup) {
+        var videoURL = iframePopup.prop("src");
+        videoURL = videoURL.replace("?autoplay=1", "");
+        iframePopup.prop("src", "");
+        popUp.hide();
+      }
+    });
+  };
+
+  slideWrapper.on("init", function (slick) {
+    slick = $(slick.currentTarget);
+
+    setTimeout(function () {
+      Main.playPauseVideo(slick, "play");
+    }, 1900);
+  });
+
+  slideWrapper.on("beforeChange", function (event, slick) {
+    slick = $(slick.$slider);
+    Main.playPauseVideo(slick, "pause");
+  });
+
+  slideWrapper.on("afterChange", function (event, slick, currentSlide) {
+    slick = $(slick.$slider);
+    Main.playPauseVideo(slick, "play");
+  });
+
+  Main.slickHome = function () {
+    slideWrapper.slick({
+      dots: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      responsive: [
+          {
+          breakpoint: 980,
+          settings: {
+              arrows: false,
+          },
+          },
+      ],
+    });
+    $('.energy-slider').slick({
+        dots: true,
+        fade:true,
+        infinite:true,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        pauseOnHover:true,
+        responsive: [
+            {
+            breakpoint: 600,
+            settings: {
+                arrows: false,
+            },
+            },
+        ],
+    });
+  };
+
+  Main.init();
+})(window, jQuery);

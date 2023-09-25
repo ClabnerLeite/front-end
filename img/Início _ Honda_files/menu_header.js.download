@@ -1,0 +1,133 @@
+(function (window, $) {
+
+  var Main = {};
+
+  Main.init = function () {
+    Main.searchPage();
+    Main.toggleMenu();
+    Main.toggleTextMenu();
+    Main.hideMenu();
+    Main.toggleSubmenu();
+    Main.toggleSearch();
+  };
+
+  Main.isTouchDevice = function () {
+    var agent = navigator.userAgent.toLowerCase();
+
+    var isTouchDevice =
+      ('ontouchstart' in document.documentElement) ||
+      (agent.match(/(iphone|ipod|ipad)/) ||
+      agent.match(/(android)/) ||
+      agent.match(/(iemobile)/) ||
+      agent.match(/iphone/i) ||
+      agent.match(/ipad/i) ||
+      agent.match(/ipod/i) ||
+      agent.match(/blackberry/i) ||
+      agent.match(/bada/i));
+
+    return isTouchDevice;
+  };
+
+  Main.searchPage = function(){
+  var searchTerm = $("#edit-search-api-fulltext").val();
+  if (searchTerm) {
+    $("#search-term").text(searchTerm);
+  }
+};
+
+  Main.toggleMenu = function () {
+    var ico = $('.menu-icon'),
+      menu = $('.menu-container'),
+      submenu = $('.menu .submenu');
+
+    ico.on('click', function () {
+      $(this).toggleClass('active');
+      $('.menu-container').addClass('required');
+      menu.toggleClass('active');
+      submenu.removeClass('active');
+
+      Main.toggleScroll();
+      Main.toggleTextMenu();
+
+    });
+  };
+
+  Main.toggleTextMenu = function () {
+    var menu = $('.menu-container'),
+      ico = $('.menu-icon .menu-text');
+
+    if (menu.hasClass('active')) {
+      ico.text('FECHAR');
+    } else {
+      ico.text('MENU');
+    }
+  };
+
+  Main.hideMenu = function () {
+    var overlay = $('.menu-container .overlay'),
+      menu = $('.menu-container'),
+      submenu = $('.menu-container .submenu'),
+      ico = $('.menu-icon');
+
+    overlay.on('click', function () {
+      $('html').removeClass('no-scroll');
+      menu.removeClass('active');
+      submenu.removeClass('active');
+
+      menu.find('li.active').removeClass('active');
+
+      ico.removeClass('active');
+      ico.children('.menu-text').text('MENU');
+    });
+  };
+
+  Main.toggleSubmenu = function () {
+    var itemMenu = $('.menu-container .menu > nav > li a'),
+    submenu = $('.menu .submenu');
+
+
+    var isTouchDevice = Main.isTouchDevice();
+    if(isTouchDevice) {
+      submenu.prepend('<p class="back-menu">&lsaquo; voltar</p>');
+    }
+
+    itemMenu.on('click', function (e) {
+
+      var _this = $(this);
+      var _parent = _this.parent();
+
+      if (_this.attr('href') === undefined || _this.attr('href').length < 1) {
+        e.preventDefault();
+      }
+
+      _parent.parent().find('li').removeClass('active');
+      submenu.removeClass('active');
+
+      if (_parent.has('.submenu')) {
+        _parent.children('.submenu').toggleClass('active');
+        _parent.toggleClass('active');
+      }
+    });
+
+    $(document).on('touchstart', '.back-menu', function() {
+      $(this).parent().removeClass('active');
+    });
+  };
+
+  Main.toggleSearch = function () {
+    var ico = $('header .search-icon'),
+      search = $('.search-container');
+
+    ico.on('click', function () {
+      $(this).toggleClass('active');
+      search.toggleClass('active');
+    });
+  };
+
+  Main.toggleScroll = function () {
+    $('html').toggleClass('no-scroll');
+  };
+
+  Main.init();
+
+}(window, jQuery));

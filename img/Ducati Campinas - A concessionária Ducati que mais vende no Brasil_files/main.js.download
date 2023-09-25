@@ -1,0 +1,152 @@
+/**
+ * Scripts de experiência front-end
+ *
+ * Author: https://www.infinitoag.com
+ * Author URI: https://www.infinitoag.com
+**/
+
+jQuery( document ).ready( function($) {
+     
+   if( window.innerWidth > 900 ){
+        $('#sidebar-collapse').addClass('in');        
+    } else {
+        $( '#sidebar-toggle a' ).click(function(event) {
+            if( $( '#sidebar-toggle a .fa' ).hasClass('fa-chevron-down') ) {
+                $( '#sidebar-toggle a .fa' ).removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            } else {
+                $( '#sidebar-toggle a .fa' ).removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            }
+        });
+    }
+
+    window.onscroll = function() {
+        var y = window.scrollY;
+
+        if( y > 0 ) {
+            $('body').addClass('scrolled');
+        } else {
+            $('body').removeClass('scrolled');
+        }
+    }
+
+    // Padrão de Validações
+    $('.input-phone, .input-fone').mask( '(00) 0000-00009' ).blur(function(event) {
+       if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+          $(this).mask('(00) 00000-0009');
+       } else {
+          $(this).mask('(00) 0000-00009');
+       }
+    });
+
+    $('.input-celphone').mask( '(00) 00000-0000' );
+    $('.input-cep').mask('00000-000');
+    $('.input-date').mask( '00/00/0000' );
+    $('.input-money').mask('000.000.000', {reverse: true});
+    $('.input-money2').mask('000.000.000,00', {reverse: true});
+
+    $('.input-cpf').mask('000.000.000-00');
+    $('.input-cnpj').mask('00.000.000/0000-00');  
+    $('.input-ie').mask('00.000.000/0000-00'); 
+    
+    var item_width = ($('#galeria-moto').width() / 3);
+    if( window.innerWidth < 990 ) item_width = ($('#galeria-moto').width() / 2);
+    if( window.innerWidth < 768 ) item_width = ($('#galeria-moto').width() / 1);
+
+    $( '#galeria-moto' ).flexslider({
+        animation: "slide",
+        animationLoop: false,
+        itemWidth: item_width,
+        itemMargin: 5,
+        loop: true,
+        slideshow: true,
+        move: 1,
+        minItems: 1,
+        maxItems: 16           
+    }); 
+
+    $( '#home-slider' ).flexslider();
+    $('#slider-testride').flexslider();
+
+    if( $('body').width() > 990 ) {
+        $('#nav-motos .menu-moto-item').mouseover(function(e) {
+            var target = e.currentTarget;
+            var id_linha = $(target).attr('data-id-linha');
+            
+            $('.capa-linha').each( function(){ $(this).removeClass('capa-linha-in'); });
+            $('#capa-linha-'+id_linha).addClass('capa-linha-in');
+        });        
+    }
+
+    $('#nav-motos .menu-moto-item a[data-toggle="collapse"]').click(function(e){
+        var target = e.currentTarget;
+        var id_clicado = $(target).attr('data-id-linha');
+        console.log( 'id clicado', id_clicado );
+
+        $('#nav-motos .menu-moto-item .collapse').each( function(){
+            var id_linha = $(this).attr('data-id-linha');
+            if( id_linha != id_clicado ) { $(this).collapse('hide'); }
+        });        
+    });
+
+    $('#galeria-moto .lightbox').tosrus({
+        activeGalleries:1,
+        effect: "fade",
+        infinite:1,
+        keys: {prev:1,next:1,close:1},
+        autoplay:0,
+        pauseOnHover:0,
+        timeout:4000,
+        pagination:{add:1,type:"thumbnails"},        
+        wrapper:{onClick:"close"}
+    });
+
+
+    // revisoes
+    $('#revisao-modelo').change( function(){
+        var modelo = $('#revisao-modelo').val();
+
+        $('.revisao-descricao-modelo').fadeOut( 200, function(){
+            $('.revisao-descricao-modelo').each( function(){
+                if( $(this).attr('data-modelo') == modelo ) {
+                    $(this).fadeIn( 200 );
+                }
+            });            
+        });
+
+        $('.revisao-agendamento form #modelo-revisao').val(modelo);
+        $('.revisao-agendamento').css('display','block');
+    });
+
+    if( $('#revisao').length > 0 ) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+         if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+        today = yyyy+'-'+mm+'-'+dd;
+        document.getElementById("horario-revisao").setAttribute("min", today);        
+    }
+        
+    $('#link-top').click(function(event) {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: 0
+        }, 500);
+    });
+
+    $('#main-menu-nav > .menu-item > a[data-toggle="collapse"]').click(function(event) {
+        if( $(this).attr('aria-expanded') == 'false' ) {
+            $('body').addClass('menu-open');
+        } else {
+            $('body').removeClass('menu-open');
+        }
+    });
+
+    $( '#loading' ).fadeOut( 400 );
+
+});

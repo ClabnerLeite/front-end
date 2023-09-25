@@ -1,0 +1,116 @@
+(function (window, $) {
+
+  var Main = {};
+
+  Main.init = function () {
+    Main.isInternetExplorer();
+    Main.tabs();
+    Main.videoPosterMobile();
+
+    if (Main.isTouchDevice()) {
+      Main.footerMobile();
+    }
+  };
+
+  Main.videoPosterMobile = function() {
+  var posterDesk,
+    posterMobile,
+    viewportWidth;
+
+
+  viewportWidth = window.innerWidth <= 768 ? true  : false;
+  posterMobile = jQuery('.video-js').attr('poster-mobile');
+  posterDesk = jQuery('.video-js').attr('poster');
+
+  jQuery(window).on('resize', function() {
+    viewportWidth = window.innerWidth <= 768 ? true : false;
+
+    if(viewportWidth) {
+      jQuery('.vjs-poster').css('background-image', 'url('+posterMobile+')');
+      // console.log('resize mobile', viewportWidth);
+    } else {
+      jQuery('.vjs-poster').css('background-image', 'url('+posterDesk+')');
+      // console.log('resize desktop', viewportWidth);
+    }
+  });
+
+  setTimeout(function() {
+    if(viewportWidth) {
+      jQuery('.vjs-poster').css('background-image', 'url('+posterMobile+')');
+      // console.log('mobile', viewportWidth);
+    }
+  }, 400);
+
+};
+
+  Main.isTouchDevice = function () {
+    var agent = navigator.userAgent.toLowerCase();
+
+    var isTouchDevice =
+      ('ontouchstart' in document.documentElement) ||
+      (agent.match(/(iphone|ipod|ipad)/) ||
+      agent.match(/(android)/) ||
+      agent.match(/(iemobile)/) ||
+      agent.match(/iphone/i) ||
+      agent.match(/ipad/i) ||
+      agent.match(/ipod/i) ||
+      agent.match(/blackberry/i) ||
+      agent.match(/bada/i));
+
+    return isTouchDevice;
+  };
+
+  Main.isInternetExplorer = function () {
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      $('html').addClass('ie');
+    }
+  };
+
+  Main.datepicker = function () {
+    var isTouchDevice = Main.isTouchDevice();
+
+    if (!isTouchDevice) {
+      $('input[type=date]')
+        .attr('type', 'text')
+        .datepicker({
+          dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
+        });
+    }
+  };
+
+  Main.slick = function () {
+    $('.slider').slick({ 
+      dots: true
+    });
+    
+  };
+
+  Main.footerMobile = function () {
+    $(document).on('touchstart', '.region-footer-first ul h2', function () {
+      $(this).parent().toggleClass('active');
+    });
+  };
+
+  Main.tabs = function () {
+    $(document).on('click', '.tabbed .tabbed-tabs li', function () {
+      var _this = $(this);
+      var tabbedContainers = _this.parents('.tabbed').find('.tabbed-container');
+      var pill = _this.data('pill');
+      var tab = tabbedContainers.filter('[data-tab="' + pill + '"]');
+
+      _this.parent().find('li').removeClass('active');
+      _this.addClass('active');
+
+      tabbedContainers.removeClass('active');
+      tab.addClass('active');
+      tab.find('.slick-initialized').slick('setPosition');
+    });
+  };
+
+  Main.init();
+
+}(window, jQuery));

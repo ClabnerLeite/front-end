@@ -1,0 +1,1430 @@
+/**
+ *
+ * Theme: CMS
+ * Folha de Estilos Personalizados
+ *
+ * Author: https://www.infinitoag.com
+ * Author URI: https://www.infinitoag.com
+ *
+**/
+
+/*******************************************************
+ * CORPO, ELEMENTOS HTML E TIPOGRAFIA
+*******************************************************/
+
+body {
+    color: #333;        
+    font-size: 15px;    
+    font-weight: 400;
+    background: #FFF;
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; }
+
+h1 { font-size: 60px; }
+h2 { font-size: 26px; }
+h3 { font-size: 22px; font-weight: bold; }
+h4 { font-size: 18px; }
+
+a { color: #000; }
+a, a:hover {
+    cursor: pointer;
+    text-decoration: none;    
+    transition: .3s
+}
+
+a:hover { color: #d10814; }
+
+/*******************************************************
+ * FORMULÁRIOS E BOTÕES
+*******************************************************/
+
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 45px;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+textarea.form-control {
+    max-height: 146px;
+}
+
+.btn {
+    border-radius: 0;
+    padding: 8px 30px;
+    border: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+    transition: .3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-default {
+    border: 1px solid #d10814;
+    background: #d10814;
+    color: #fff;
+}
+.btn-primary { border: 1px solid #000; background: #000; color: #FFF; }
+.btn-success,
+.btn-danger { border: 1px solid #ED3237; background: #ED3237; color: #FFF; }
+
+.btn.btn-inverted {
+    color: #FFF;
+    border: 2px solid #FFF;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    transition: .3s;
+}
+
+div#opcoes-produto {
+    border-left: 2px solid #dddd;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    display: none;
+}
+
+.wpcf7-form ::placeholder { color: #4a4a4a; opacity: 1; }
+.wpcf7-form :-ms-input-placeholder { color: #4a4a4a; }
+.wpcf7-form ::-ms-input-placeholder { color: #4a4a4a; }
+
+/*******************************************************
+ * CLASSES E ELEMENTOS PRINCIPAIS
+*******************************************************/
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.alignleft {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.nav-tabs { text-align: center; border: 0; margin-bottom: 30px; }
+
+.nav-tabs li,
+.nav-tabs li.active {
+    float: none;
+    display: inline-block;
+    margin: 0;
+}
+
+.nav-tabs li a {
+    font-size: 22px;
+    padding: 0;
+    margin: 0 15px;
+    color: #000;
+    border: 0;
+}
+
+.nav-tabs li a,
+.nav-tabs li a:active,
+.nav-tabs li a:focus,
+.nav-tabs li:active a,
+.nav-tabs li:focus a,
+.nav-tabs li.active a
+.nav-tabs li.active a:active
+.nav-tabs li.active a:focus
+.nav-tabs li.active:active a
+.nav-tabs li.active:focus a  {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    background: none;
+}
+
+.nav-tabs li:hover a,
+.nav-tabs li a:hover {
+    border: 0;
+    border-bottom: 3px solid #f0f0f0;
+    background: none;
+}
+
+.nav-tabs li.active a {
+    border: 0;
+    border-bottom: 3px solid #BE0511;
+    color: #be0511;
+    position: relative;
+}
+
+.nav-tabs li.active a:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8px 0 8px;
+    border-color: #be0512 transparent transparent transparent;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -5px;
+}
+
+
+.media-left {
+    display: inline-block;
+    float: left;
+}
+
+.fundo-amarelo .container { max-width: 960px; }
+.fundo-amarelo {
+    background: #d10814;
+    padding: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cta-paginas { text-align: center; }
+.cta-paginas .lead {
+    font-size: 32px;
+    line-height: 34px;
+}
+.cta-paginas .btn {
+    font-size: 18px;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.ctas { text-align: center; }
+.ctas a {
+    display: inline-block;
+    margin: 5px;
+}
+
+.conteudo-destacado {
+    font-size: 18px;
+    padding: 100px 0 50px;
+    color: #FFF;
+}
+
+.cinza-destacado {
+    background: #ECF0F1;
+    padding: 30px;
+    position: relative;
+}
+.cinza-destacado:after {
+    content: "";
+    background: #ECF0F1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+}
+
+.titulo {
+    margin: 0 0 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.titulo.titulo-destaque-direita:after,
+.titulo.titulo-destaque-ambos:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    background: #000;
+    top: 50%;
+    right: -120px;
+}
+
+.titulo.titulo-destaque-ambos:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    background: #000;
+    top: 50%;
+    left: -120px;
+}
+
+div#form-orcamento {
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+.margin-10 { margin: 10px; }
+
+#main .gallery { margin: 0 -5px; }
+#main .gallery .gallery-item img { border: 0; }
+#main .gallery .gallery-item {
+    margin: 0;
+    border: 5px solid #fff;
+}
+
+#main .flex-control-nav { display: none; }
+#main .flex-direction-nav a { line-height: 40px; }
+
+/*******************************************************
+ * CABECALHO
+*******************************************************/
+
+#header {
+    padding: 0;
+    background-color: transparent;
+    color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;    
+    z-index: 99;
+    padding: 20px 0 0;
+    transition: .3s;
+}
+
+.admin-bar #header { top: 32px; }
+.scrolled #header { padding: 5px 0 0; }
+
+#main-menu div#logo {
+    max-width: 100px;
+    text-align: center;
+}
+
+#mobile-menu { display: none; }
+
+nav#main-menu {
+    float: none;
+    margin: 0;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 25px -5px #000;
+    background: #FFF;
+    transition: .3s;
+}
+
+.scrolled nav#main-menu { transition: .3s; }
+div#main-menu-container { margin-right: -36px; }
+
+body.menu-open nav#main-menu,
+body.menu-open #main-menu .menu-item.menu-item-shop a {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#main-menu-nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    float: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-menu .menu-item { float: none; }
+#main-menu .menu-item a {
+    color: #000;
+    padding: 30px 45px;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    border-radius: 0;
+    border: 0;
+    position: relative;
+}
+
+.scrolled #main-menu .menu-item a { padding: 20px 45px; }
+#main-menu-nav > .menu-item > a:hover { text-shadow: 0 0 3px #0003; }
+#main-menu-nav > .menu-item > a .fas { vertical-align: text-top; }
+#main-menu li.menu-item.menu-item-logo a { padding: 0; }
+
+#main-menu li.menu-item.menu-item-logo a, #main-menu li.menu-item.menu-item-logo a:hover, #main-menu li.menu-item.menu-item-logo:hover a {
+    text-shadow: none !important;
+    background: none !important;
+}
+
+#main-menu .menu-item.menu-item-shop a {
+    background: #ec1c24;
+    color: #FFF;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: .3s;
+}
+
+#main-menu #menu-menu-principal > .menu-item > a:focus, 
+#main-menu #menu-menu-principal > .menu-item > a:hover {
+    text-decoration: none;
+    border: 0;
+    color: #d10814;
+    background: none;
+}
+
+
+#main-menu .menu-item .dropdown-menu a {
+    color: #000;
+    font-size: 14px;
+    padding: 3px 10px;
+}
+
+#main-menu .menu-item.current-menu-item > a,
+#main-menu .menu-item.current-menu-item a .caret {
+    font-weight: bold;
+    background: transparent;
+    border: 0;    
+    color: #d10814;
+}
+
+#main-menu .navbar-nav>li>.dropdown-menu {
+    border: 0;
+    width: 200px;
+    text-align: center;
+    left: 50%;
+    margin-left: -100px;
+    padding: 0;
+    margin-top: 20px;
+    box-shadow: 0 0 35px -10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+#main-menu .navbar-nav>li>.dropdown-menu:before {
+    content: "";
+    position: absolute;    
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+#main-menu .menu-item .dropdown-menu li:last-child a { border: 0; }
+#main-menu .menu-item .dropdown-menu a {
+    color: #000;
+    font-size: 14px;
+    display: block;
+    white-space: normal;
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+div#menu-motos {
+    position: absolute;
+    background: #FFF;
+    box-shadow: 0px 0px 35px -10px #000;
+    color: #000;    
+    width: 1170px;
+    margin-left: -6px;
+    z-index: 99;
+}
+
+#menu-motos #capas-linhas {
+    border-left: 2px solid #ec1d25;
+}
+
+#menu-motos .capa-linha.capa-linha-in { display: flex; }
+#menu-motos .capa-linha {
+    display: none;
+    justify-content: flex-start;
+    padding: 50px;
+    align-items: center;
+    min-height: 576px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#menu-motos .capa-linha-conteudo {
+    display: block;
+    color: #FFF;
+    text-shadow: 1px 1px 5px #000;
+}
+
+ul#nav-motos {
+    margin-right: -30px;
+}
+
+#nav-motos li.menu-moto-item { padding-bottom: 1px; }
+#main-menu #nav-motos .menu-moto-item a {
+    padding: 25px 10px;
+    min-height: 60px;
+    font-size: 13px;
+    text-transform: none;
+    border: 0;
+    color: #666;
+    background: transparent;
+    position: relative;
+}
+
+#main-menu #nav-motos .menu-moto-item > a:after {
+    content: "";
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 3px 0 3px;
+    border-color: #333333 transparent transparent transparent;
+}
+
+#main-menu #nav-motos .menu-moto-item.menu-estoque-item a:after { display: none; }
+#main-menu #nav-motos .menu-moto-item.menu-estoque-item a img { max-width: 90%; }
+#main-menu #nav-motos .menu-moto-item.menu-estoque-item a {
+    padding: 17px 5px 18px;
+    margin-top: -2px;
+    text-align: center;
+}
+
+#main-menu #nav-motos .menu-moto-item a span.menu-modelos-linha {
+    color: #666;    
+}
+
+#nav-motos .menu-modelos-icone {
+    height: 50px;
+    width: 80px;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    right: 10px;
+}
+
+#main-menu #nav-motos .menu-moto-item .menu-modelos-linha img {
+    max-height: 25px;
+}
+
+#nav-motos ul.submenu-modelos {
+    padding: 0;
+    list-style: none;
+    border-left: 3px solid #000;
+    margin-left: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+#main-menu #nav-motos .submenu-modelos .menu-item-modelos a {
+    padding: 2px 10px;
+    display: block;
+    min-height: 0;
+    font-size: 12px;
+    color: #000;
+}
+
+
+
+/*******************************************************
+ * RODAPE
+*******************************************************/
+
+#footer {
+    padding: 80px 0;
+    color: #9b9b9b;
+    background: #0f0f0f;
+    text-align: center;
+}
+
+div#footer-logo {
+    max-width: 180px;
+    margin: 0 auto 30px;
+}
+
+#footer a { 
+    color: #9f9f9f; 
+    text-decoration: none;
+}
+
+div#footer-fone { font-size: 22px; }
+div#footer-fone i.fab {
+    color: #51c75d;
+    font-size: 32px;
+}
+
+div#footer-fone .footer-fone-icone {
+    color: #51c75d;
+    font-size: 42px;
+    vertical-align: middle;
+}
+
+#copyright { margin: 20px 0; }
+
+#footer .social a {
+    display: inline-block;
+    font-size: 22px;
+    color: #9b9b9b;
+    margin: 10px 3px;
+}
+
+
+#link-wpp,
+#link-fone,
+#link-top {
+    position: fixed;
+    bottom: 20px;
+    right: 140px;
+    color: #FFF;
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+    line-height: 52px;
+    background: #449f14;
+    text-align: center;
+    border-radius: 100%;
+    box-shadow: 0 0 25px -10px #000;
+    z-index: 9;
+    transition: .6s;
+    opacity: 0;
+}
+
+#link-top {    
+    right: 20px;    
+    background: #000;
+    line-height: 50px;
+    transition: .3s;
+}
+
+#link-fone {    
+    right: 80px;    
+    background: #ec1d25;
+    line-height: 54px;
+    transition: .4s;
+}
+
+.scrolled #link-wpp,
+.scrolled #link-fone,
+.scrolled #link-top {
+    opacity: 1;
+}
+
+#link-wpp:hover,
+#link-fone:hover,
+#link-top:hover {
+    transform: scale(1.1);
+}
+
+.footer-fones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.footer-fone .ff-numero .ff-icone { color: #449f14; }
+.footer-fone .ff-numero { font-size: 22px; }
+
+.footer-fone {
+    margin: 0 30px 15px;
+    font-size: 13px;
+}
+
+#loading {
+    position: fixed;
+    background: #FFF url( 'img/loading.gif' ) no-repeat center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: block;
+}
+
+/*******************************************************
+ * PÁGINAS
+*******************************************************/
+
+section.page-content {  overflow: hidden; }
+#page .page-content { padding: 0; }
+
+#main > article {
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0 100px;
+}
+
+
+
+/*home*/
+
+#home { overflow: hidden; }
+#main #home { padding: 0; }
+
+div#home-slider {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+#home-slider .homeslide-desktop { display: block; }
+#home-slider .homeslide-mobile { display: none; }
+
+#home-slider .homeslide-desktop {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+#home-slider .home-slide-desktop-caption {
+    max-width: 480px;
+    color: #FFF;
+    font-size: 21px;
+    line-height: 26px;
+    text-shadow: 1px 2px 5px #000;
+    margin-top: -100px;
+}
+
+#home-slider .homeslide-desktop .btn {
+    text-shadow: none;
+    font-weight: normal;
+    margin-top: 30px;
+    font-style: 20px;
+}
+
+div#home-testride {
+    margin: 80px 0;
+    box-shadow: 0 0 10px -4px;
+    border-radius: 5px;
+}
+
+#home-testride .conteudo-testride { padding: 12px 20px; }
+#home-testride .btn { font-size: 18px; }
+
+#slider-testride {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#slider-testride .slider-testride-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-destaque {
+    margin-bottom: 30px;
+    box-shadow: 0 0 12px -4px #000;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 370px;
+    transition: .3s;
+}
+
+.home-destaque:hover { transform: scale(1.05); }
+
+.home-destaque-conteudo { 
+    padding: 20px; 
+    color: #000;
+}
+
+
+.home-destaque-subtitulo {
+    color: #666;
+    margin: 0;
+}
+
+.home-promo { transition: .4s ease; margin-bottom: 30px; }
+.home-promo:hover { opacity: .7; }
+
+#home-blog .post {
+    margin-bottom: 30px;
+}
+
+#home-blog .post h1 {
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 20px;
+}
+
+div#banner-destaque {
+    position: relative;
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+}
+
+div#banner-destaque .banner-destaque-conteudo {
+    position: absolute;
+    margin-left: 50px;
+    max-width: 350px;
+    color: #FFF;
+    font-size: 17px;
+}
+
+div#banner-destaque .btn { font-size: 17px; }
+
+
+.home-contato { 
+    margin: 0 auto 50px; 
+    text-align: center;
+}
+
+.home-contato-logo {
+    max-width: 120px;
+    margin: 0 auto 20px;
+}
+
+.home-contato-email {
+    color: #ec1c24;
+    font-weight: bold;
+}
+
+/*contato*/
+
+div#form-contato {
+    background: #FFF;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px -10px #000;
+}
+
+/*test ride*/
+
+#test-ride .flex-item-check {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+#test-ride .flex-item-check img { max-height: 110px; }
+#test-ride .flex-item-check {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 0 auto 30px;
+}
+
+
+/*motos*/
+
+article#motos { padding-top: 0; }
+#motos .page-header {
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+    margin: 0 0 80px;
+    padding: 200px 0 0;
+    border: 0;
+}
+
+#motos .page-title {
+    color: #FFF;
+    text-shadow: 1px 1px 5px #000;
+}
+
+#motos .titulo-linha {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#motos .motos {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#motos .moto {
+    margin: 15px 15px 30px;
+    text-align: center;
+    display: inline-block;
+    max-width: 20%;
+    vertical-align: top;
+}
+
+#motos .moto-thumb {
+    height: auto;
+    margin: 0;
+}
+
+#motos .moto-titulo h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 10px 0;
+    height: 50px;
+}
+
+article#moto { padding: 0px; }
+#moto .page-header {
+    padding: 0;
+    height: 100vh;
+    margin: 0;
+    border: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    text-shadow: 1px 1px 5px #000;
+    position: relative;
+    z-index: 1;
+}
+
+.single-moto .conteudo-capa span {
+    font-size: 35px !important;
+}
+
+#moto section.page-content {
+    overflow-y: visible;
+    position: relative;
+    z-index: 3;
+    font-size: 17px;
+}
+
+.specs {
+    background: #fff;
+    margin: -35px 0;
+    position: absolute;
+    z-index: 5;
+    box-shadow: 0 0 25px -5px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1140px;
+}
+
+.specs .spec:last-child { border: 0; }
+.specs .spec {
+    border-right: 1px solid #000;
+    width: 30%;
+}
+
+.specs .spec span.valor { font-weight: bold; }
+.specs .spec span {
+    display: block;
+    font-size: 15px;
+}
+
+.moto-thumb {
+    height: 480px;
+    margin-left: -15px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.moto-main-content {
+    padding: 80px 50px;
+    max-width: 580px;
+}
+
+div#galeria-moto {
+    border: 0;
+    padding: 0;
+    margin: 30px -10px 0;
+}
+
+#galeria-moto .slides li > a { display: block; }
+#galeria-moto .flex-direction-nav a:before { font-size: 13px; }
+#main #galeria-moto .flex-direction-nav a {
+    background: #FFF;
+    border-radius: 100%;
+    text-align: center;
+    color: transparent;
+}
+
+/*sobre*/
+
+article#sobre { padding-top: 0; }
+#sobre .page-header {
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+    margin: 0 0 80px;
+    padding: 500px 0 0;
+    border: 0;
+}
+
+#sobre .page-title {
+    color: #FFF;
+    text-shadow: 1px 1px 5px #000;
+}
+
+/*revisoes*/
+
+#revisao {
+    background: #FFF;
+    color: #000;
+    padding: 50px;
+    border-radius: 25px;
+    min-height: 500px;
+    margin-top: 50px;
+}
+
+.revisao-modelos {
+    margin: 0 auto 50px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.revisao-agendamento {
+    max-width: 480px;
+    margin: 0 auto;
+    display: none;
+}
+
+.revisao-agendamento h3 {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.revisao-descricao-modelo { display: none; }
+.revisao-descricao-modelo h3 {
+    text-align: center;
+    margin: 30px 0;
+    color: #ec1c24;
+}
+
+/*blog*/
+
+#blog .page-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    color: #ec1c24;
+}
+
+#blog .post-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#blog .post-meta ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 13px;
+    justify-content: space-between;
+    color: #999;
+}
+
+#blog .post {
+    /*text-align: justify;*/
+    letter-spacing: .24px;
+    line-height: 24px;
+}
+
+#blog .post-content .gallery {
+    margin-bottom: 10px;
+}
+
+#blog .post-tags {
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 30px 0;
+    font-size: 13px;
+    color: #999;
+}
+
+#blog .addtoany_header {
+    margin: 0;
+    float: left;
+    line-height: 36px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#blog .post-relacionados .post-title h1 {
+    font-size: 22px;
+}
+
+.post-relacionados h3 {
+    padding: 20px 0 0;
+    display: block;
+    float: none;
+    clear: both;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption img {
+    max-width: 100%;
+    height: auto;
+}
+
+#sidebar .widget {
+    margin-bottom: 50px;
+}
+
+#sidebar .widget .widgettitle {
+    background-color: #ec1c24;
+    color: #FFF;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+form#searchform .form-control {
+    width: 100%;
+}
+form#searchform .form-group {
+    width: calc(100% - 50px);
+}
+form#searchform {
+    display: flex;
+    justify-content: space-between;
+}
+
+button#searchsubmit {
+    height: 45px;
+    display: inline-block;
+    vertical-align: top;
+    width: 45px;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar .widget_categories ul li:nth-child(even) a { background: #f0f0f0; }
+#sidebar .widget_categories ul li a {
+    padding: 5px 10px;
+    display: block;
+    font-size: 14px;
+    color: #666;
+}
+
+#blog .post.post-item {
+    margin: 20px 0 50px;
+}
+
+.wp-pagenavi a, .wp-pagenavi span {
+    background: #f0f0f0;
+    border: 0;
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.wp-pagenavi span.current {
+    background: #ec1c24;
+    color: #FFF;
+}
+
+#sidebar .widget_recent_entries li {
+    display: block;
+    margin: 5px 0;
+}
+
+#sidebar .widget_recent_entries a {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#sidebar .widget_recent_entries .post-date {
+    font-size: 13px;
+    color: #999;
+}
+
+/*termos/testride*/
+
+div#testride-logo {
+    max-width: 140px;
+    margin: 10px auto;
+}
+
+#testride h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.testride-dados {
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.testride-assinaturas {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 13px;
+}
+
+.testride-assinatura {
+    border-top: 1px solid #000;
+    max-width: 500px;
+    margin: 30px auto 20px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+
+.testride-aprovacao .testride-assinatura {
+    margin: 30px 0 20px;
+}
+
+.testride-termos {
+    font-size: 12px;
+    line-height: 15px;
+}
+
+#testride table {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+#testride td, #testride th {
+    padding: 3px 5px;
+}
+
+/*******************************************************
+ * AJUSTES RESPONSIVOS
+*******************************************************/
+
+
+@media( max-height: 720px ) {
+	#main-menu #nav-motos .menu-moto-item a {
+	    padding: 15px 10px;
+        min-height: 50px;
+	}
+
+	#nav-motos .menu-modelos-icone {
+	    height: 40px;
+	    width: 65px;
+	}
+
+	#menu-motos .capa-linha { min-height: 446px;}
+}
+
+@media( max-width: 1199px ) {
+    div#menu-motos {
+        max-width: 968px;
+        margin-left: -7px;
+    }
+
+    #nav-motos .menu-modelos-icone {
+        width: 65px;
+        background-repeat: no-repeat;
+        margin-top: -20px;
+    }
+
+    #menu-motos .capa-linha { min-height: 510px; }
+}
+
+@media( max-width: 990px ) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }     
+
+    div#sidebar-toggle {
+        display: block;
+        text-align: center;
+        background: #f0f0f0;
+        padding: 15px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #menu-motos #capas-linhas { display: none; }
+    div#menu-motos {
+        max-width: 714px;
+        margin-left: -12px;
+    }
+
+    #main-menu .menu-item a { padding: 25px; }
+    .scrolled #main-menu .menu-item a { padding: 20px 25px; }
+
+    ul#nav-motos { background: #FFF; }
+
+    #slider-testride .slider-testride-image { height: 300px; }
+    #home-destaques h3 { font-size: 18px; }
+
+    div#banner-destaque { display: block; }
+    div#banner-destaque .banner-destaque-conteudo {
+        position: relative;
+        color: #000;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    #moto .moto-thumb {
+        margin: -10px -15px 0;
+        height: 500px;
+    }
+
+    #moto .moto-main-content { max-width: 100%; }
+    #motos .moto { max-width: 28%; }
+	
+	.footer-fones {
+		display: block;
+	}
+
+}
+
+@media( max-width: 768px ) {		
+    div#main-menu-container { margin-right: -10px; }
+
+    #sobre .page-header {
+        padding-top: 350px;
+        background-position: center;
+    }
+
+    div#home-slider {
+        background: #f6f6f6;
+        padding-bottom: 20px;
+    }
+
+    #home-slider .homeslide-desktop { display: none; }
+    #home-slider .homeslide-mobile { display: block; }
+
+    #motos .moto { max-width: 45%; }
+
+    div#menu-motos {
+        max-width: 692px;
+        margin-left: -8px;
+    }
+
+    #main-menu #nav-motos .menu-moto-item a span.menu-modelos-linha {
+        color: #000;
+        font-size: 18px;
+    }
+
+    #main-menu #nav-motos .submenu-modelos .menu-item-modelos a {
+        font-size: 16px;
+        padding: 3px 10px;
+    }
+
+}
+
+
+@media( max-width: 767px ) {
+
+    #header, 
+    .scrolled #header,
+    #header > .container { padding: 0; transition: 0s; }
+
+    .admin-bar #header { top: 46px; }
+
+    .scrolled #header,
+    .admin-bar.scrolled #header { top: 0; }
+
+    #main-menu { display: none; }
+    #mobile-menu { display: block; border: 0; }
+
+    #mobile-menu .navbar-brand { padding: 8px; }
+    #mobile-menu #logo { max-width: 100px; }
+
+    #mobile-menu .navbar-nav { margin: 0 -15px; }
+    div#mobile-menu-collapse { max-height: calc(100vh - 52px); }
+
+    #mobile-menu li.menu-moto-item { padding: 10px; }
+    #mobile-menu .menu-modelos-linha {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #mobile-menu ul.submenu-modelos {
+        list-style: none;
+        padding: 0;
+    }
+
+    #mobile-menu li.menu-item.mobile-menu-item-shop > a {
+        background: #ec1c24;
+        color: #FFF;
+    }
+
+    #mobile-menu .dropdown .menu-item-modelos a {
+	    padding: 3px 0px;
+	    display: block;
+	}
+
+    #main > article { padding: 50px 0 80px; }
+    div#form-contato { padding: 20px; }
+
+    .home-slide-mobile-caption h1 { font-size: 28px; }
+
+    #motos .page-header { padding-top: 100px; }
+    #motos .moto {
+        max-width: 70%;
+        margin: 0 0 30px;
+    }
+
+    #moto .page-header { height: 50vh; }
+    #moto .specs {
+	    margin: 0;
+	    padding: 0 15px;
+	    border-radius: 0;
+	    display: block;
+	    position: relative;
+	    box-shadow: none;
+	}
+
+    #moto .specs .spec:last-child { border: 0; }
+    #moto .specs .spec {
+        width: 100%;
+        display: block;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    #moto .moto-thumb { height: 40vh; }
+    #moto .moto-main-content { padding: 20px; }
+
+    #home-slider .flex-direction-nav {
+	    display: none;
+	}
+
+	.conteudo-destacado { padding: 30px 0; }
+	div#form-contato { padding: 10px; }
+
+}
